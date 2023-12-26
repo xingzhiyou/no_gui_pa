@@ -1,8 +1,5 @@
 import requests_html
-import responses
 from bs4 import BeautifulSoup
-import html5lib
-from parsel import Selector
 import re
 from time import sleep
 
@@ -32,7 +29,7 @@ class paweb:
             area = arr[1]  # 面积
             direction = arr[2]  # 方向
             floor_height = arr[3]  # 楼层高度
-            i_don_t_know_what_it_is = arr[4]  # 暂时不知道是什么
+            # i_don_t_know_what_it_is = arr[4]  # 暂时不知道是什么
             construction_time = arr[5]  # 建造时间
             # 空格分割
             fname_arr = arr[6].strip().split(' ')
@@ -51,19 +48,19 @@ class paweb:
                 price = 9999
                 unitprice = 9999
             dictionary = {
-                'fname': fname,
-                'attribute': attribute,
-                'area': area,
-                'direction': direction,
-                'floor_height': floor_height,
-                'i_don_t_know_what_it_is': i_don_t_know_what_it_is,
-                'construction_time': construction_time,
-                'community': community,
-                'wherehome': wherehome,
-                'is_it_close_to_the_subway': is_it_close_to_the_subway,
-                'homo': homo,
-                'intermediary': intermediary,
-                'price': price,
-                'unitprice': unitprice}
+                '名称': fname,
+                '户型': attribute,
+                '地区': area,
+                '方向': direction,
+                '楼层高度': floor_height,
+                # 'i_don_t_know_what_it_is': i_don_t_know_what_it_is,
+                '建造时间': construction_time,
+                '小区名': community,
+                '所在位置': wherehome,
+                '交通状况': is_it_close_to_the_subway,
+                '户主': homo,
+                '中介': intermediary,
+                '价格': price,
+                '单位价格': unitprice}
             house.append(dictionary)
         return house

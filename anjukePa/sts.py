@@ -1,6 +1,5 @@
-import paweb
-import csv
 import pandas as pd
+import paweb
 
 
 class sts:
