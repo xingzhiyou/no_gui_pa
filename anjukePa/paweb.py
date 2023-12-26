@@ -29,7 +29,6 @@ class paweb:
             area = arr[1]  # 面积
             direction = arr[2]  # 方向
             floor_height = arr[3]  # 楼层高度
-            # i_don_t_know_what_it_is = arr[4]  # 暂时不知道是什么
             construction_time = arr[5]  # 建造时间
             # 空格分割
             fname_arr = arr[6].strip().split(' ')
@@ -53,7 +52,6 @@ class paweb:
                 '地区': area,
                 '方向': direction,
                 '楼层高度': floor_height,
-                # 'i_don_t_know_what_it_is': i_don_t_know_what_it_is,
                 '建造时间': construction_time,
                 '小区名': community,
                 '所在位置': wherehome,
