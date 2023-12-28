@@ -16,7 +16,6 @@ class paweb:
         house = []
         soup1 = BeautifulSoup(self.open_web_page(f'https://shanghai.anjuke.com/sale/p{n}/').text)
         sleep(2)
-        slist = soup1.select('#esfMain > section > section.list-main > section.list-left > section:nth-child(4)')
         tongji_tag = soup1.find_all('div', class_='property')
         for tongji_tags in tongji_tag:
             sss = tongji_tags.text.split('\n')
@@ -24,7 +23,7 @@ class paweb:
             for ssss in sss:
                 arr.append(ssss.strip())
             # 分割名字与格局
-            attribute = re.search("(\d+ 室 \d+ 厅 \d+ 卫)", arr[0]).group(1)  # 房子格局
+            attribute = re.search(r'(\d+ 室 \d+ 厅 \d+ 卫)', arr[0]).group(1)  # 房子格局
             fname = arr[0].strip(attribute)  # 房子名
             area = arr[1]  # 面积
             direction = arr[2]  # 方向
@@ -33,6 +32,10 @@ class paweb:
             # 空格分割
             fname_arr = arr[6].strip().split(' ')
             arr_fname = []
+            try:
+                fname_arr.append(arr[8])
+            except:
+                pass
             for fname_arrs in fname_arr:
                 arr_fname.append(fname_arrs.strip())
             community = arr_fname[0]  # 小区名
@@ -44,21 +47,22 @@ class paweb:
                 price = arr_fname[11]  # 价格
                 unitprice = arr_fname[13]  # 单位价格
             except:
-                price = 9999
-                unitprice = 9999
+                prce = arr_fname[8].split(' ')
+                price = prce[0]
+                unitprice = prce[2]
             dictionary = {
                 '名称': fname,
                 '户型': attribute,
-                '地区': area,
-                '方向': direction,
+                '面积': area,
+                '朝向': direction,
                 '楼层高度': floor_height,
                 '建造时间': construction_time,
                 '小区名': community,
                 '所在位置': wherehome,
-                '交通状况': is_it_close_to_the_subway,
+                '小区品质': is_it_close_to_the_subway,
                 '户主': homo,
                 '中介': intermediary,
-                '价格': price,
+                '价格/万': price,
                 '单位价格': unitprice}
             house.append(dictionary)
         return house
