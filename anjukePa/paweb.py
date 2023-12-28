@@ -6,7 +6,7 @@ from time import sleep
 
 class paweb:
     def __init__(self):
-        self.soup = BeautifulSoup()
+        pass
 
     def open_web_page(self, url):
         se = requests_html.HTMLSession()
