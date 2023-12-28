@@ -4,7 +4,7 @@ import re
 from time import sleep
 
 
-class paweb:
+class PaWeb:
     def __init__(self):
         pass
 
