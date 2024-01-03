@@ -1,14 +1,16 @@
-import requests_html
-from bs4 import BeautifulSoup
 import re
 from time import sleep
+
+import requests_html
+from bs4 import BeautifulSoup
 
 
 class PaWeb:
     def __init__(self):
         pass
 
-    def open_web_page(self, url):
+    @staticmethod
+    def open_web_page(url):
         se = requests_html.HTMLSession()
         return se.get(url)
 
