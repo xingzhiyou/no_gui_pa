@@ -65,6 +65,7 @@ class PaWeb:
                 '户主': homo,
                 '中介': intermediary,
                 '价格/万': price,
-                '单位价格': unitprice}
+                '单位价格': unitprice
+            }
             house.append(dictionary)
         return house
